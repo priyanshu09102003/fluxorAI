@@ -94,11 +94,15 @@ export function LoginForm(){
 
                                     <Button variant="outline" type="button" className="w-full cursor-pointer" disabled={isPending}>
 
+                                        <Image src="/github.svg" alt="github" width={20} height={20} />
+
                                         Continue with GitHub
 
                                     </Button>
 
                                     <Button variant="outline" type="button" className="w-full cursor-pointer" disabled={isPending}>
+
+                                        <Image src="/google.svg" alt="github" width={20} height={20} />
 
                                         Continue with Google
 

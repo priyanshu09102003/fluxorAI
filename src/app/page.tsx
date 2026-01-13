@@ -1,11 +1,23 @@
-import { caller } from "@/trpc/server";
+"use client"
+
+import { Button } from "@/components/ui/button";
+import { authClient } from "@/lib/auth-client";
 
 
-const Page = async() => {
-  const users = await caller.getUsers()
+const Page = () => {
+  const {data} = authClient.useSession()
+
   return (
     <div>
-      Building FluxorAI
+      {JSON.stringify(data)}
+
+      {data &&(
+
+        <Button onClick={() => authClient.signOut()}>
+          Logout
+        </Button>
+
+      )}
     </div>
   );
 }

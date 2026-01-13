@@ -8,6 +8,7 @@ import {useForm} from "react-hook-form"
 import { toast } from "sonner";
 import {email, z} from "zod"
 import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 
 import {
   Card,
@@ -141,7 +142,14 @@ export function LoginForm(){
                                     )} />
 
                                     <Button type="submit" className="w-full cursor-pointer" disabled={isPending}>
-                                        Login
+                                        {isPending ? (
+                                            <>
+                                                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                                                Please Wait
+                                            </>
+                                        ) : (
+                                            "Login"
+                                        )}
                                     </Button>
 
                                 </div>

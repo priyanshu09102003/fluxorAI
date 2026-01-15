@@ -1,6 +1,6 @@
 <div align="center">
   <h1>🤖 FluxorAI</h1>
-  <p><strong>An AI Automation Platform</strong></p>
+  <p><strong>An AI Automation and Workflow-Creation Platform</strong></p>
   
   <img src="/public/thumbnail-fluxorai.png" alt="FluxorAI Banner" width="100%">
   
@@ -17,6 +17,13 @@
 ---
 
 <div align="center">
+
+  <h2>📝 Brief Overview 📝</h2>
+  <p><strong>FluxorAI</strong> is a <strong>visual workflow automation platform</strong> with <i>drag-and-drop canvas</i>, equipped with multiple <i>AI integrations (OpenAI, Claude, Gemini)<i>, multiple triggers and <i>oauth integrations (eg: g-forms, slack, discord etc)<i>, messaging nodes, background job execution, authentication, subscriptions, and full SaaS features built with Next.js 16 and TypeScript</p>
+
+  <br/>
+  
   <h2>🚧 Coming Soon 🚧</h2>
   <p>This project is currently under development. Stay tuned for updates!</p>
+   
 </div>

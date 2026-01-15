@@ -102,7 +102,7 @@ export const AppSidebar = () => {
         <SidebarFooter>
             <SidebarMenu>
                 <SidebarMenuItem>
-                    <SidebarMenuButton tooltip="Upgrade to Pro" className="gap-x-4 h-10 px-4" onClick={() => {}}>
+                    <SidebarMenuButton tooltip="Upgrade to Pro" className="gap-x-4 h-10 px-4" onClick={() => authClient.checkout({ slug: "FluxorAI-PRO"})}>
                         <StarIcon className="h-6 w-6"/>
                         <span>Upgrade to Pro</span>
                     </SidebarMenuButton>

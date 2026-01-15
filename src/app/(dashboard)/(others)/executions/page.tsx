@@ -1,5 +1,7 @@
+import { requireAuth } from "@/lib/auth-utils";
 
-const Page = () => {
+const Page = async () => {
+    await requireAuth();
     return (
         <p>Executions Page</p>
     )

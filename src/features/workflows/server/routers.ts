@@ -1,0 +1,59 @@
+import prisma from "@/lib/db"
+import {createTRPCRouter, protectedProcedure} from "@/trpc/init"
+import {generateSlug} from "random-word-slugs"
+import z from "zod"
+
+//Creating WORKFLOW CRUD
+export const workFlowsRouter = createTRPCRouter({
+
+    //CREATE
+    create: protectedProcedure.mutation(({ctx}) => {
+        return prisma.workflow.create({
+            data:{
+                name: generateSlug(3),
+                userId: ctx.auth.user.id
+            }
+        })
+    }),
+
+    //REMOVE(DELETE)
+    remove: protectedProcedure
+    .input(z.object({id: z.string()}))
+    .mutation(({ctx , input})=>{
+        return prisma.workflow.delete({
+            where:{
+                id: input.id,
+                userId: ctx.auth.user.id
+            }
+        })
+    }),
+
+    //UPDATE(NAME)
+    updateName: protectedProcedure
+    .input(z.object({id: z.string(), name: z.string().min(1)}))
+    .mutation(({ctx , input}) => {
+        return prisma.workflow.update({
+            where: {id: input.id, userId: ctx.auth.user.id},
+            data: {name: input.name}
+        })
+    }),
+
+    //Get one Workflow
+    getOne: protectedProcedure.input(z.object({id: z.string()})).query(({ctx , input}) => {
+        return prisma.workflow.findUnique({
+            where:{
+                id: input.id,
+                userId: ctx.auth.user.id
+            }
+        })
+    }),
+
+    //Get All the user's workflows
+    getMany: protectedProcedure.query(({ctx}) => {
+        return prisma.workflow.findMany({
+            where:{
+                userId: ctx.auth.user.id
+            }
+        })
+    }),
+})

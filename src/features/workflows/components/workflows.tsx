@@ -1,6 +1,6 @@
 "use client"
 
-import { EntityContainer, EntityHeader, EntitySearch } from "@/components/Workflows/entity-components";
+import { EntityContainer, EntityHeader, EntityPagination, EntitySearch } from "@/components/Workflows/entity-components";
 import { useCreateWorkflow, useSuspenseWorkflows } from "../hooks/use-wrokflows"
 import { upgradeModal } from "@/hooks/use-upgrade-modal";
 import { useRouter } from "next/navigation";
@@ -67,6 +67,20 @@ export const WorkflowsHeader = ({disabled}: {disabled?:boolean}) => {
     )
 }
 
+export const WorkflowsPagiantions = () => {
+    const workflows = useSuspenseWorkflows();
+    const [params, setParams] = useWorkflowsParams()
+
+    return(
+        <EntityPagination
+        disabled = {workflows.isFetching}
+        totalPages={workflows.data.totalPages}
+        page = {workflows.data.page}
+        onPageChange = {(page) => setParams({...params, page})}
+         />
+    )
+}
+
 export const WorkflowsContainer = (
     {
         children
@@ -78,7 +92,7 @@ export const WorkflowsContainer = (
         <EntityContainer
         header = {<WorkflowsHeader />}
         search = {<WorkflowsSearch />}
-        pagination = {<></>}
+        pagination = {<WorkflowsPagiantions/>}
         >
             {children}
         </EntityContainer>

@@ -8,6 +8,7 @@ import { useWorkflowsParams } from "../hooks/use-workflows-params";
 import { useEntitySearch } from "@/hooks/use-entity-search";
 import type { Workflow } from "@prisma/client";
 import { WorkflowIcon } from "lucide-react";
+import { formatDistanceToNow} from "date-fns"
 
 export const WorkflowsSearch = () => {
     const [params , setParams] = useWorkflowsParams()
@@ -147,9 +148,9 @@ export const WorkflowItem = ({data}:{data:Workflow}) =>{
             title={data.name}
             subtitle = {
                 <>
-                    Updated TODO {" "}
+                    Updated {formatDistanceToNow(data.updatedAt)} {" "}
                     &bull; Created{" "}
-                    TODO
+                    {formatDistanceToNow(data.createdAt, {addSuffix: true})}
                 </>
             }
 

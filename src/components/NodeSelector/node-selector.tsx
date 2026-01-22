@@ -68,9 +68,31 @@ export function NodeSelector({open, onOpenChange, children} : NodeSelectorProps)
                 x: centerX + (Math.random() - 0.5)*200,
                 y: centerY + (Math.random() - 0.5)*200
             })
+
+            const newNode = {
+            id: createId(),
+            data: {},
+            position: flowPosition,
+            type: selection.type
+            }
+
+            if(hasInitialTrigger){
+                return [newNode]
+            }
+
+            return [...nodes, newNode]
         })
 
-    }, [])
+        onOpenChange(false);
+
+        
+
+    }, [
+        setNodes,
+        getNodes,
+        onOpenChange,
+        screenToFlowPosition
+    ])
 
 
     return(
@@ -95,7 +117,7 @@ export function NodeSelector({open, onOpenChange, children} : NodeSelectorProps)
                         const Icon = nodeType.icon;
 
                         return(
-                            <div key={nodeType.type} className="w-full justify-start h-auto py-5 px-4 rounded-none cursor-pointer border-l-2 border-transparent hover:border-l-primary" onClick={() => {}}>
+                            <div key={nodeType.type} className="w-full justify-start h-auto py-5 px-4 rounded-none cursor-pointer border-l-2 border-transparent hover:border-l-primary" onClick={() => handleNodeSelect(nodeType)}>
 
                                 <div className="flex items-center gap-6 w-full overflow-hidden">
 
@@ -138,7 +160,7 @@ export function NodeSelector({open, onOpenChange, children} : NodeSelectorProps)
                         const Icon = nodeType.icon;
 
                         return(
-                            <div key={nodeType.type} className="w-full justify-start h-auto py-5 px-4 rounded-none cursor-pointer border-l-2 border-transparent hover:border-l-primary" onClick={() => {}}>
+                            <div key={nodeType.type} className="w-full justify-start h-auto py-5 px-4 rounded-none cursor-pointer border-l-2 border-transparent hover:border-l-primary" onClick={() => handleNodeSelect(nodeType)}>
 
                                 <div className="flex items-center gap-6 w-full overflow-hidden">
 

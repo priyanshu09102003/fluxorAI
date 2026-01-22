@@ -5,6 +5,7 @@ import { useSuspenseWorkflow } from "../../hooks/use-wrokflows"
 import { useState, useCallback } from "react";
 import {ReactFlow, applyNodeChanges, applyEdgeChanges, addEdge, type Node, type Edge, type NodeChange, type EdgeChange, type Connection, Background, Controls, MiniMap} from "@xyflow/react"
 import '@xyflow/react/dist/style.css';
+import { nodeComponents } from "@/config/node-components";
 
 export const EditorLoading = () => {
     return <LoadingView message="Loading Editor..." />
@@ -52,6 +53,7 @@ export const Editor = ({workflowId}: {workflowId: string}) => {
                 onEdgesChange={onEdgesChange}
                 onConnect={onConnect}
                 fitView
+                nodeTypes={nodeComponents}
                 proOptions={{
                     hideAttribution: true
                 }}

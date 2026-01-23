@@ -153,7 +153,7 @@ export function NodeSelector({open, onOpenChange, children} : NodeSelectorProps)
                     </SheetTitle>
 
                     <SheetDescription>
-                        An <b>Execution Node</b> tells the system to start and run a separate sub-task or another workflow
+                        An <b>Execution Node</b> tells the system to start and run a separate sub-task or another workflow.
                     </SheetDescription>
                 </SheetHeader>
                  <div>

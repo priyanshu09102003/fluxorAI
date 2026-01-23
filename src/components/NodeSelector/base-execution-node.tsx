@@ -7,6 +7,7 @@ import { memo, type ReactNode, useCallback } from "react";
 import { BaseNode , BaseNodeContent } from "../base-node";
 import { BaseHandle } from "../base-handle";
 import { WorkflowNode } from "../Workflows/workflow-node";
+import { type NodeStatus, NodeStatusIndicator } from "../node-status-indicator";
 
 interface BaseExecutionNodeProps extends NodeProps{
     icon: LucideIcon | string;
@@ -15,7 +16,7 @@ interface BaseExecutionNodeProps extends NodeProps{
     children?: ReactNode;
     onSettings?: () => void;
     onDoubleClick?:() => void;
-    // status?: NodeStatus
+    status?: NodeStatus
 }
 
 export const BaseExecutionNode = memo(
@@ -24,6 +25,7 @@ export const BaseExecutionNode = memo(
         name,
         description,
         children,
+        status = "initial",
         onSettings,
         onDoubleClick,
 
@@ -49,27 +51,33 @@ export const BaseExecutionNode = memo(
 
         return(
             <WorkflowNode name={name} description={description}  onDelete={handleDelete} onSettings={onSettings}>
-                <BaseNode onDoubleClick={onDoubleClick}>
-                    <BaseNodeContent>
-                        {typeof Icon === "string" ? (
-                            <Image src={Icon} alt={name} width={16} height={16} />
-                        ): (
-                            <Icon className="size-4 text-muted-foreground" />
-                        )}
-                        {children}
+                <NodeStatusIndicator
+                status={status}
+                variant="border"
+                >
+                    <BaseNode status={status} onDoubleClick={onDoubleClick}>
+                        <BaseNodeContent>
+                            {typeof Icon === "string" ? (
+                                <Image src={Icon} alt={name} width={16} height={16} />
+                            ): (
+                                <Icon className="size-4 text-muted-foreground" />
+                            )}
+                            {children}
 
-                        <BaseHandle 
-                            id="target-1"
-                            type="target"
-                            position={Position.Left}
-                        />
-                        <BaseHandle 
-                            id="source-1"
-                            type="source"
-                            position={Position.Right}
-                        />
-                    </BaseNodeContent>
-                </BaseNode>
+                            <BaseHandle 
+                                id="target-1"
+                                type="target"
+                                position={Position.Left}
+                            />
+                            <BaseHandle 
+                                id="source-1"
+
+                                type="source"
+                                position={Position.Right}
+                            />
+                        </BaseNodeContent>
+                    </BaseNode>
+                </NodeStatusIndicator>
             </WorkflowNode>
         )
     }

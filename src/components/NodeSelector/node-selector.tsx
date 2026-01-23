@@ -101,10 +101,11 @@ export function NodeSelector({open, onOpenChange, children} : NodeSelectorProps)
             <SheetTrigger asChild>{children}</SheetTrigger>
 
             <SheetContent side="right" className="w-full sm:max-w-md overflow-y-auto">
+                
 
                 <SheetHeader>
-                    <SheetTitle>
-                        What triggers this Workflow?
+                    <SheetTitle className="inline-flex items-center w-fit px-3 py-1.5 rounded-md text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200">
+                        Trigger Nodes
                     </SheetTitle>
 
                     <SheetDescription>
@@ -147,8 +148,8 @@ export function NodeSelector({open, onOpenChange, children} : NodeSelectorProps)
                 <Separator />
 
                  <SheetHeader>
-                    <SheetTitle>
-                        What executes this Workflow?
+                    <SheetTitle className="inline-flex items-center w-fit px-3 py-1.5 rounded-md text-sm font-semibold bg-blue-100 text-blue-700 border border-blue-200">
+                        Execution Nodes
                     </SheetTitle>
 
                     <SheetDescription>

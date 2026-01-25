@@ -47,6 +47,6 @@ export const executeWorkflow = inngest.createFunction(
       })
     }
 
-    return {sortedNodes};
+    return {workflowId , result: context};
   }
 );

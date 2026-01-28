@@ -31,6 +31,13 @@ const triggerNodes: NodeTypeOption[] = [
         icon: "/googleform.svg"
     },
 
+    {
+        type: NodeType.STRIPE_TRIGGER,
+        label: "STRIPE Event",
+        description: "When a Stripe event is captured",
+        icon: "/stripe.svg"
+    },
+
 ]
 
 const executionNodes: NodeTypeOption[] = [

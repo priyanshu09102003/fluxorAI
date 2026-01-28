@@ -13,9 +13,9 @@ Handlebars.registerHelper("json" , (context) => {
 });
 
 type HTTPRequestData = {
-    variableName: string;
-    endpoint: string;
-    method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
+    variableName?: string;
+    endpoint?: string;
+    method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
     body?: string
 }
 
@@ -37,51 +37,54 @@ export const HTTPRequestExecutor: NodeExecutor<HTTPRequestData> = async({
             status: "loading"
         }),
     );
-
-
-    if(!data.endpoint){
-        //Error State
-
-        await publish(
-            httpRequestChannel().status({
-                nodeId,
-                status: "error"
-            }),
-        );
-
-        throw new NonRetriableError("HTTP Request Node: No Endpoint Configured")
-    }
-
-    if(!data.method){
-        //Error Statte
-
-         await publish(
-            httpRequestChannel().status({
-                nodeId,
-                status: "error"
-            }),
-        );
-
-        throw new NonRetriableError("Method not Configured")
-    }
-
-    if(!data.variableName){
-        //Error Statte
-
-         await publish(
-            httpRequestChannel().status({
-                nodeId,
-                status: "error"
-            }),
-        );
-
-        throw new NonRetriableError("No variable detected")
-    }
-
     
 
     try{
         const result = await step.run("http-request", async() => {
+
+            
+                if(!data.endpoint){
+                    //Error State
+
+                    await publish(
+                        httpRequestChannel().status({
+                            nodeId,
+                            status: "error"
+                        }),
+                    );
+
+                    throw new NonRetriableError("HTTP Request Node: No Endpoint Configured")
+                }
+
+                if(!data.method){
+                    //Error Statte
+
+                    await publish(
+                        httpRequestChannel().status({
+                            nodeId,
+                            status: "error"
+                        }),
+                    );
+
+                    throw new NonRetriableError("Method not Configured")
+                }
+
+                if(!data.variableName){
+                    //Error Statte
+
+                    await publish(
+                        httpRequestChannel().status({
+                            nodeId,
+                            status: "error"
+                        }),
+                    );
+
+                    throw new NonRetriableError("No variable detected")
+                }
+
+
+
+
             const endpoint = Handlebars.compile(data.endpoint)(context);
             const method = data.method;
 

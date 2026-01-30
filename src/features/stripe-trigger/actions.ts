@@ -2,18 +2,18 @@
 
 import { getSubscriptionToken, type Realtime } from "@inngest/realtime";
 import { inngest } from "@/inngest/client";
-import { googleFormTriggerChannel } from "@/inngest/channels/google-form-trigger-channel";
+import { stripeTriggerChannel } from "@/inngest/channels/stripe-trigger-channel";
 
-export type GoogleFormTriggerToken = Realtime.Token<
+export type StripeTriggerToken = Realtime.Token<
 
-    typeof googleFormTriggerChannel,
+    typeof stripeTriggerChannel,
     ["status"]
 
 >;
 
-export async function fetchGoogleFormTriggerRealtimeToken():Promise<GoogleFormTriggerToken>{
+export async function fetchStripeTriggerRealtimeToken():Promise<StripeTriggerToken>{
     const token = await getSubscriptionToken(inngest, {
-        channel: googleFormTriggerChannel(),
+        channel: stripeTriggerChannel(),
         topics: ["status"]
     })
 

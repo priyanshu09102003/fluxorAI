@@ -1,10 +1,10 @@
 import { BaseTriggerNode } from "@/components/NodeSelector/base-trigger-nodes";
 import { NodeProps } from "@xyflow/react";
 import { memo, useState } from "react";
-import { GOOGLE_FORM_TRIGGER_CHANNEL_NAME } from "@/inngest/channels/google-form-trigger-channel";
 import { useNodeStatus } from "@/hooks/use-node-status";
-import { fetchGoogleFormTriggerRealtimeToken } from "./actions";
 import { StripeTriggerDialog } from "./dialog";
+import { fetchStripeTriggerRealtimeToken } from "./actions";
+import { STRIPE_TRIGGER_CHANNEL_NAME } from "@/inngest/channels/stripe-trigger-channel";
 
 
 
@@ -17,9 +17,9 @@ export const StripeTriggerNode = memo((props: NodeProps) => {
 
         const nodeStatus = useNodeStatus({
                     nodeId: props.id,
-                    channel: GOOGLE_FORM_TRIGGER_CHANNEL_NAME,
+                    channel: STRIPE_TRIGGER_CHANNEL_NAME,
                     topic: "status",
-                    refreshToken: fetchGoogleFormTriggerRealtimeToken
+                    refreshToken: fetchStripeTriggerRealtimeToken
         });
         
     return(

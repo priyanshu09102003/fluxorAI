@@ -1,8 +1,11 @@
 import { NonRetriableError } from "inngest";
-import { NodeExecutor } from "../types"
+import {createGoogleGenerativeAI} from "@ai-sdk/google"
+import {generateText} from "ai"
 import ky, {type Options as KyOptions} from "ky"
 import Handlebars from "handlebars"
 import { httpRequestChannel } from "@/inngest/channels/http-request";
+import { NodeExecutor } from "../../types";
+import { geminiChannel } from "@/inngest/channels/gemini";
 
 
 Handlebars.registerHelper("json" , (context) => {
@@ -12,14 +15,14 @@ Handlebars.registerHelper("json" , (context) => {
     return safeString
 });
 
-type HTTPRequestData = {
+type GeminiData = {
     variableName?: string;
-    endpoint?: string;
-    method?: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
-    body?: string
+    model?: string;
+    systemPrompt?: string;
+    userPrompt?: string;
 }
 
-export const HTTPRequestExecutor: NodeExecutor<HTTPRequestData> = async({
+export const geminiExecutor: NodeExecutor<GeminiData> = async({
     data,
     nodeId, 
     context, 
@@ -32,120 +35,95 @@ export const HTTPRequestExecutor: NodeExecutor<HTTPRequestData> = async({
     //loading state for http-request
 
     await publish(
-        httpRequestChannel().status({
+        geminiChannel().status({
             nodeId,
             status: "loading"
         }),
     );
-    
-
-    try{
-        const result = await step.run("http-request", async() => {
-
-            
-                if(!data.endpoint){
-                    //Error State
-
-                    await publish(
-                        httpRequestChannel().status({
-                            nodeId,
-                            status: "error"
-                        }),
-                    );
-
-                    throw new NonRetriableError("HTTP Request Node: No Endpoint Configured")
-                }
-
-                if(!data.method){
-                    //Error Statte
-
-                    await publish(
-                        httpRequestChannel().status({
-                            nodeId,
-                            status: "error"
-                        }),
-                    );
-
-                    throw new NonRetriableError("Method not Configured")
-                }
-
-                if(!data.variableName){
-                    //Error Statte
-
-                    await publish(
-                        httpRequestChannel().status({
-                            nodeId,
-                            status: "error"
-                        }),
-                    );
-
-                    throw new NonRetriableError("No variable detected")
-                }
 
 
-
-
-            const endpoint = Handlebars.compile(data.endpoint)(context);
-            const method = data.method;
-
-            const options: KyOptions = {method};
-
-            if(["POST" , "PUT", "PATCH"].includes(method)){
-                const resolved = Handlebars.compile(data.body || "{}")(context);
-                JSON.parse(resolved)
-                options.body = resolved;
-                options.headers = {
-                    "Content-Type": "application/jsonf"
-                }
-            }
-
-            const response = await ky(endpoint, options);
-            const contentType = response.headers.get("content-type")
-            const responseData = contentType?.includes("application/json") ? await response.json() : await response.text()
-
-            const responsePayload = {
-
-                httpResponse:{
-                    status: response.status,
-                    statusText: response.statusText,
-                    data: responseData
-                }
-
-            }
-
-
-                return{
-                    ...context,
-                    [data.variableName]:responsePayload
-                }
-            
-
-
-        })
-
-        //Success state for http-request
-
+    if(!data.variableName){
         await publish(
-                httpRequestChannel().status({
-                    nodeId,
-                    status: "success"
-                }),
-        );
+        geminiChannel().status({
+            nodeId,
+            status: "error"
+        }))
 
-
-        return result
-
-    }catch(error){
-
-
-        await publish(
-                httpRequestChannel().status({
-                    nodeId,
-                    status: "error"
-                }),
-        );
-
-        throw error;
+        throw new NonRetriableError("Gemini Node: Variable Name is missing")
     }
+
+    if(!data.userPrompt){
+        await publish(
+            geminiChannel().status({
+                nodeId,
+                status: "error"
+            })
+        )
+
+        throw new NonRetriableError("Gemini Node: User Prompt is missing")
+    }
+
+    const systemPrompt = data.systemPrompt?Handlebars.compile(data.systemPrompt)(context)
+    : "You are a helpful assistant. Help me to do ...";
+
+    const userPrompt = Handlebars.compile(data.userPrompt)(context)
+
+
+    //FETCH CREDENTIAL USER SELECTED
+
+
+    const credentialValue = process.env.GOOGLE_GENERATIVE_AI_API_KEY
+
+    const google = createGoogleGenerativeAI({
+        apiKey: credentialValue,
+    })
+
+    try {
+
+        const {steps} = await step.ai.wrap(
+            "gemini-generate-text",
+            generateText,
+            {
+                model: google(data.model || "gemini-1.5-flash"),
+                system: systemPrompt,
+                prompt: userPrompt,
+                experimental_telemetry:{
+                    isEnabled: true,
+                    recordInputs: true,
+                    recordOutputs: true
+                }
+            },
+        )
+        
+        const text = steps[0].content[0].type === "text" ? steps[0].content[0].text : "";
+
+
+        await publish(
+            geminiChannel().status({
+                nodeId,
+                status: "success"
+            })
+        );
+
+
+        return {
+            ...context,
+            [data.variableName]:{
+                aiResponse: text
+            }
+        }
+
+    } catch (error) {
+        await publish(
+            geminiChannel().status({
+                nodeId,
+                status: "error"
+            }),
+        )
+
+        throw error
+    }
+
+
 
 }

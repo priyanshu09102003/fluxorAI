@@ -11,16 +11,6 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 
-const AVAILABLE_MODELS = [
-    "gemini-1.5-flash",
-    "gemini-1.5-flash-8b",
-    "gemini-1.5-pro",
-    "gemini-1.0-pro",
-    "gemini-pro"
-
-    
-] as const;
-
 
 
 interface GeminiDialogProps {
@@ -37,7 +27,6 @@ const formSchema = z.object({
     .regex(/^[A-Za-z_$][A-Za-z0-9_$]*$/, {
         message: "Variable name must start with a 'LETTER' or 'UNDERSCORE' and contain only letters, numbers and underscores"
     }),
-    model: z.enum(AVAILABLE_MODELS),
     systemPrompt: z.string().optional(),
     userPrompt: z.string().min(1, "User Prompt is required to make the model work")
 })
@@ -58,7 +47,6 @@ export const GeminiDialog = ({
         resolver: zodResolver(formSchema),
         defaultValues:{
             variableName: defaultValues.variableName || "",
-            model: defaultValues.model || AVAILABLE_MODELS[0],
             systemPrompt: defaultValues.systemPrompt || " ",
             userPrompt: defaultValues.userPrompt || "",
         }
@@ -68,15 +56,14 @@ export const GeminiDialog = ({
     useEffect(() => {
         if(open){
             form.reset({
-                variableName: defaultValues.variableName || "",
-                model: defaultValues.model || AVAILABLE_MODELS[0],
+                variableName: defaultValues.variableName || "" ,
                 systemPrompt: defaultValues.systemPrompt || " ",
                 userPrompt: defaultValues.userPrompt || "",
             })
         }
     } , [open, defaultValues, form])
 
-    const watchVariableName = form.watch("variableName") || "myAPIVariable"
+    const watchVariableName = form.watch("variableName") || "myPromptVar"
 
 
     const handleSubmit = (values: z.infer<typeof formSchema>) => {
@@ -104,45 +91,11 @@ export const GeminiDialog = ({
                                 <FormLabel>Variable Name</FormLabel>
                                     
                                     <FormControl>
-                                        <Input placeholder="Eg: myAPIVariable" {...field}/>
+                                        <Input placeholder="Eg: myPromptVar" {...field}/>
                                     </FormControl>
 
                                     <FormDescription>
                                         Add a variable name so that the results from this node can be referenced in the other nodes:{" "} {`{{${watchVariableName}.text}}`}
-                                    </FormDescription>
-                                    <FormMessage />
-                            </FormItem>
-                        )} />
-
-                         <FormField control={form.control} name="model" render={({field}) => (
-                            <FormItem>
-                                <FormLabel>Model</FormLabel>
-                                    
-                                    <Select
-                                    onValueChange={field.onChange}
-                                    defaultValue={field.value}
-                                    >
-
-                                        <FormControl>
-                                            <SelectTrigger className="w-full">
-                                                <SelectValue placeholder="Select a model" />
-                                            </SelectTrigger>
-                                        </FormControl>
-
-                                        <SelectContent>
-                                            {
-                                                AVAILABLE_MODELS.map((model) => (
-                                                    <SelectItem key={model} value={model}>
-                                                        {model}
-                                                    </SelectItem>
-                                                ))
-                                            }
-                                        </SelectContent>
-
-                                    </Select>
-
-                                    <FormDescription>
-                                        The available Google Gemini models to use for the completion of the workflow
                                     </FormDescription>
                                     <FormMessage />
                             </FormItem>

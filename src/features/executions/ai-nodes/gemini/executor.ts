@@ -3,7 +3,6 @@ import {createGoogleGenerativeAI} from "@ai-sdk/google"
 import {generateText} from "ai"
 import ky, {type Options as KyOptions} from "ky"
 import Handlebars from "handlebars"
-import { httpRequestChannel } from "@/inngest/channels/http-request";
 import { NodeExecutor } from "../../types";
 import { geminiChannel } from "@/inngest/channels/gemini";
 
@@ -17,7 +16,6 @@ Handlebars.registerHelper("json" , (context) => {
 
 type GeminiData = {
     variableName?: string;
-    model?: string;
     systemPrompt?: string;
     userPrompt?: string;
 }
@@ -63,6 +61,9 @@ export const geminiExecutor: NodeExecutor<GeminiData> = async({
         throw new NonRetriableError("Gemini Node: User Prompt is missing")
     }
 
+    //Throw error if credential is missing
+
+
     const systemPrompt = data.systemPrompt?Handlebars.compile(data.systemPrompt)(context)
     : "You are a helpful assistant. Help me to do ...";
 
@@ -84,7 +85,7 @@ export const geminiExecutor: NodeExecutor<GeminiData> = async({
             "gemini-generate-text",
             generateText,
             {
-                model: google(data.model || "gemini-1.5-flash"),
+                model: google("gemini-2.0-flash"),
                 system: systemPrompt,
                 prompt: userPrompt,
                 experimental_telemetry:{
@@ -109,7 +110,7 @@ export const geminiExecutor: NodeExecutor<GeminiData> = async({
         return {
             ...context,
             [data.variableName]:{
-                aiResponse: text
+                text
             }
         }
 

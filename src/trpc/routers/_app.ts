@@ -3,9 +3,11 @@ import { inngest } from '@/inngest/client';
 import {createTRPCRouter, protectedProcedure } from '../init';
 import prisma from '@/lib/db';
 import { workFlowsRouter } from '@/features/workflows/server/routers';
+import { credentialsRouter } from '@/features/credentials/server/routers';
 
 export const appRouter = createTRPCRouter({
-  workflows: workFlowsRouter
+  workflows: workFlowsRouter,
+  credentials: credentialsRouter
 });
 // export type definition of API
 export type AppRouter = typeof appRouter;

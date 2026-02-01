@@ -1,7 +1,7 @@
 "use client"
 
 import { CredentialType } from '@prisma/client';
-import { useRouter , useParams } from 'next/navigation';
+import { useRouter} from 'next/navigation';
 import Image from 'next/image';
 import React from 'react'
 import { useCreateCredential, useUpdateCredential, useSuspenseCredential } from '../hooks/use-credentials';
@@ -81,7 +81,7 @@ interface CredentialFormProps{
     }
 }
 
-const CredentialsForm = ({initialData}:CredentialFormProps) => {
+export const CredentialsForm = ({initialData}:CredentialFormProps) => {
 
     const router = useRouter();
     const createCredential = useCreateCredential();
@@ -245,4 +245,12 @@ const CredentialsForm = ({initialData}:CredentialFormProps) => {
   )
 }
 
-export default CredentialsForm
+export const CredentialView = ({
+    credentialId
+}: {credentialId: string}) => {
+    const {data: credential} = useSuspenseCredential(credentialId);
+
+    return <CredentialsForm initialData={credential} />
+}
+
+

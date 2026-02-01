@@ -132,7 +132,7 @@ const CredentialsForm = ({initialData}:CredentialFormProps) => {
                 </CardTitle>
 
                 <CardDescription>
-                    {isEdit ? "Update your API key or credential details" : "Add a new API key or credential to your account to make your model work"}
+                    {isEdit ? "Update your API key or credential details" : "Add a new API key or credential to your account"}
                 </CardDescription>
 
             </CardHeader>

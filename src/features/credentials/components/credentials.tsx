@@ -5,9 +5,9 @@ import {useRemoveCredential, useSuspenseCredentials } from "../hooks/use-credent
 import { useRouter } from "next/navigation";
 import { useCredentialsParams } from "../hooks/use-credentials-params";
 import { useEntitySearch } from "@/hooks/use-entity-search";
-import type { Workflow } from "@prisma/client";
-import { KeyIcon, WorkflowIcon } from "lucide-react";
+import { CredentialType , Credential} from "@prisma/client";
 import { formatDistanceToNow} from "date-fns"
+import Image from "next/image";
 
 export const CredentialsSearch = () => {
     const [params , setParams] = useCredentialsParams()
@@ -108,14 +108,22 @@ export const CredentialsEmpty = () => {
     )
 }
 
+const credentialLogos: Record<CredentialType, string> = {
+    [CredentialType.OPENAI]: "/openai.svg",
+    [CredentialType.ANTHROPIC]: "/anthropic.svg",
+    [CredentialType.GEMINI]: "/gemini.svg",
+}
 
-export const CredentialItem = ({data}:{data:Workflow}) =>{
+
+export const CredentialItem = ({data}:{data:Credential}) =>{
 
     const removeCredential = useRemoveCredential()
 
     const handleRemove = () => {
         removeCredential.mutate({id: data.id})
     }
+
+    const logo = credentialLogos[data.type] || "/openai.svg"
 
 
     return(
@@ -133,7 +141,7 @@ export const CredentialItem = ({data}:{data:Workflow}) =>{
             image={
                 <div className="size-8 flex items-center justify-center">
 
-                    <KeyIcon className="size-5 text-muted-foreground" />
+                    <Image src={logo} alt={data.type} width={20} height={20} />
 
                 </div>
             }

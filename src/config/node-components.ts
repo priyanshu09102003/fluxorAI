@@ -3,6 +3,7 @@ import { AnthropicNode } from "@/features/executions/ai-nodes/anthropic/node";
 import { GeminiNode } from "@/features/executions/ai-nodes/gemini/node";
 import { OpenAINode } from "@/features/executions/ai-nodes/openai/node";
 import { HttpRequestNode } from "@/features/executions/http-request/node";
+import { DiscordNode } from "@/features/executions/messaging-nodes/discord/node";
 import { GoogleFormTrigger } from "@/features/g-form-trigger/node";
 import { ManualTriggerNode } from "@/features/manual-triggers/node";
 import { StripeTriggerNode } from "@/features/stripe-trigger/node";
@@ -18,6 +19,7 @@ export const nodeComponents = {
     [NodeType.GEMINI]: GeminiNode,
     [NodeType.OPENAI]: OpenAINode,
     [NodeType.ANTHROPIC]: AnthropicNode,
+    [NodeType.DISCORD]: DiscordNode
 } as const satisfies NodeTypes
 
 export type RegisteredNodeType = keyof typeof nodeComponents;

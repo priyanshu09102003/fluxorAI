@@ -25,7 +25,8 @@ type AnthropicData = {
 export const AnthropicExecutor: NodeExecutor<AnthropicData> = async({
     data,
     nodeId, 
-    context, 
+    context,
+    userId, 
     step,
     publish
 })=>
@@ -86,7 +87,8 @@ export const AnthropicExecutor: NodeExecutor<AnthropicData> = async({
     const credential = await step.run("get-credential", () => {
             return prisma.credential.findUnique({
                 where:{
-                    id: data.credentialId
+                    id: data.credentialId,
+                    userId
                 }
             })
         })

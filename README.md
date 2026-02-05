@@ -134,7 +134,7 @@ FluxorAI supports multiple node categories for building comprehensive workflows:
 - **Manual Trigger**: Start workflows with a button click for testing
 
 **AI Nodes**:
-- **OpenAI Node**: Integrate GPT-4, GPT-3.5-turbo, and other OpenAI models
+- **OpenAI Node**: Integrate OpenAI model
 - **Claude Node**: Use Anthropic's Claude models for intelligent processing
 - **Gemini Node**: Leverage Google's Gemini AI for advanced tasks
 
@@ -248,11 +248,6 @@ Once credentials are saved, they're automatically available across your workflow
 - Workflows using deleted credentials will fail with clear error messages
 - Prevent unused keys from lingering in your account
 
-**Credential Status**:
-- **Active**: Credential is valid and ready to use
-- **Invalid**: API key failed validation during last use
-- **Expired**: Token or key has expired and needs renewal
-- **Missing**: Required credential not yet configured
 
 **Validation**:
 - Test credentials before saving to ensure they work
@@ -379,7 +374,6 @@ The **Manual Trigger** allows on-demand workflow execution:
 - **Custom Inputs**: Provide test data when manually triggering workflows
 - **Debug Mode**: Run workflows step-by-step to troubleshoot issues
 - **Scheduled Runs**: Set up cron-style schedules for recurring executions
-- **Batch Processing**: Manually trigger workflows with multiple data inputs
 - **Use Cases**: Testing, debugging, data migration, one-time operations
 
 **Example Use Case**: Manually trigger a workflow to generate weekly reports using AI and send them to your team via Slack.

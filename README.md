@@ -54,7 +54,7 @@ Built for developers, entrepreneurs, and teams seeking to automate complex workf
 <tr>
 <td width="50%">
 
-<img src="./public/signup.png" alt="Signup Process" width="100%">
+<img src="./public/screenshots/signup.png" alt="Signup Process" width="100%">
 
 </td>
 <td width="50%">
@@ -82,7 +82,7 @@ Our streamlined onboarding gets you started in seconds, with full access to all 
 <tr>
 <td width="50%">
 
-<img src="./public/signin.png" alt="Signin Process" width="100%">
+<img src="./public/screenshots/signin.png" alt="Signin Process" width="100%">
 
 </td>
 <td width="50%">

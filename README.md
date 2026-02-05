@@ -210,20 +210,20 @@ The **Credentials Tab** is your centralized hub for API key management:
 4. Click **"Save"**
 5. Your key is immediately encrypted with Cryptr and stored securely
 
-<div style="overflow-x: auto; white-space: nowrap;">
-  <table style="display: inline-table;">
+<div style="overflow-x: auto;">
+  <table>
     <tr>
-      <td style="min-width: 350px; max-width: 350px; padding: 15px;" align="center">
-        <h4>Step 1: Click on New Credential</h4>
-        <img src="./public/screenshots/cred-management.png" alt="Click New Credential" style="width: 100%; max-height: 250px; object-fit: contain;">
+      <td width="33%" align="center">
+        <h4>Click on New Credential</h4>
+        <img src="./public/screenshots/cred-management.png" alt="Adding Credentials" width="100%" style="max-height: 200px; object-fit: contain;">
       </td>
-      <td style="min-width: 350px; max-width: 350px; padding: 15px;" align="center">
-        <h4>Step 2: Configure API Key and Model Provider</h4>
-        <img src="./public/screenshots/c-2.png" alt="Configure Credential" style="width: 100%; max-height: 250px; object-fit: contain;">
+      <td width="33%" align="center">
+        <h4>Name your API Key and select a Model Provider</h4>
+        <img src="./public/screenshots/c-2.png" alt="Credential Configuration" width="100%" style="max-height: 200px; object-fit: contain;">
       </td>
-      <td style="min-width: 350px; max-width: 350px; padding: 15px;" align="center">
-        <h4>Step 3: Save Encrypted Key</h4>
-        <img src="./public/screenshots/c3.png" alt="Save Credential" style="width: 100%; max-height: 250px; object-fit: contain;">
+      <td width="33%" align="center">
+        <h4>Save your API Key</h4>
+        <img src="./public/screenshots/c3.png" alt="Encrypted Storage" width="100%" style="max-height: 200px; object-fit: contain;">
       </td>
     </tr>
   </table>

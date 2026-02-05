@@ -189,7 +189,7 @@ All workflow data is stored securely in Neon PostgreSQL with Prisma ORM, ensurin
 ## 🔐 Credentials Management
 
 <div align="center">
-  <img src="./public/screenshots/cred-management.png.png" alt="Credentials Management" width="100%" style="max-height: 250px; object-fit: cover;">
+  <img src="./public/screenshots/cred-management.png" alt="Credentials Management" width="100%" style="max-height: 250px; object-fit: cover;">
 </div>
 
 FluxorAI provides a secure, dedicated **Credentials** section for managing your AI provider API keys and integration tokens. All credentials are encrypted using **Cryptr** before being stored in the database, ensuring enterprise-grade security for your sensitive data.
@@ -213,15 +213,15 @@ The **Credentials Tab** is your centralized hub for API key management:
 <div style="overflow-x: auto;">
   <table>
     <tr>
-      <td width="33%" align="center">
+      <td width="40%" align="center">
         <h4>Click on New Credential</h4>
         <img src="./public/screenshots/cred-management.png" alt="Adding Credentials" width="100%" style="max-height: 200px; object-fit: contain;">
       </td>
-      <td width="33%" align="center">
+      <td width="40%" align="center">
         <h4>Name your API Key and select a Model Provider</h4>
         <img src="./public/screenshots/c-2.png" alt="Credential Configuration" width="100%" style="max-height: 200px; object-fit: contain;">
       </td>
-      <td width="33%" align="center">
+      <td width="40%" align="center">
         <h4>Save your API Key</h4>
         <img src="./public/screenshots/c3.png" alt="Encrypted Storage" width="100%" style="max-height: 200px; object-fit: contain;">
       </td>

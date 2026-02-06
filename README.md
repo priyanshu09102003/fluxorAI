@@ -283,7 +283,7 @@ With FluxorAI's comprehensive credentials management, you can confidently use mu
 ## 🤖 AI Integrations
 
 <div align="center">
-  <img src="./public/ai-nodes.png" alt="AI Integrations" width="100%" style="max-height: 400px; object-fit: cover;">
+  <img src="./public/screenshots/c-2.png" alt="AI Integrations" width="100%" style="max-height: 400px; object-fit: cover;">
 </div>
 
 FluxorAI provides seamless integration with the world's leading AI providers, enabling you to build intelligent workflows that leverage cutting-edge language models. All AI integrations support secure credential management with encrypted API key storage.
@@ -307,6 +307,10 @@ FluxorAI provides seamless integration with the world's leading AI providers, en
 
 ### AI Node Configuration
 
+<div align="center">
+  <img src="./public/screenshots/config-ai.png" alt="AI Integrations" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
+
 Each AI node in your workflow can be fully customized:
 
 - **Prompt Templates**: Use variable templating to create dynamic prompts: `Analyze this data: {{trigger.input}}`
@@ -317,6 +321,10 @@ Each AI node in your workflow can be fully customized:
 **Note**: Before using AI nodes, ensure you've added your API keys in the **Credentials** section. All keys are encrypted and securely stored.
 
 ### AI-Powered Error Tracking
+
+<div align="center">
+  <img src="./public/screenshots/sentry-logging.png" alt="AI Integrations" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
 
 FluxorAI integrates **Sentry AI Monitoring** to provide intelligent error tracking:
 
@@ -333,12 +341,28 @@ With FluxorAI's AI integrations, you can build sophisticated automation workflow
 ## 🎯 Trigger Nodes
 
 <div align="center">
-  <img src="./public/triggers.png" alt="Trigger Nodes" width="100%" style="max-height: 400px; object-fit: cover;">
+  <img src="./public/screenshots/trigger-nodes.png" alt="Trigger Nodes" width="100%" style="max-height: 400px; object-fit: cover;">
 </div>
 
 Trigger nodes are the entry points for your workflows, determining when and how automation begins. FluxorAI supports multiple trigger types to accommodate diverse use cases, from real-time webhooks to manual execution.
 
 ### Webhook Trigger
+
+<div style="overflow-x: auto;">
+  <table>
+    <tr>
+      <td width="50%" align="center">
+        <h4>Unique Endpoint URLs</h4>
+        <img src="./public/screenshots/trigger-config.png" alt="Adding Credentials" width="100%" style="max-height: 200px; object-fit: contain;">
+      </td>
+      <td width="33%" align="center">
+        <h4>Different Methods</h4>
+        <img src="./public/screenshots/methods-config.png" alt="Credential Configuration" width="100%" style="max-height: 200px; object-fit: contain;">
+      </td>
+    </tr>
+  </table>
+</div>
+
 
 The **Webhook Trigger** enables real-time workflow execution via HTTP requests:
 
@@ -353,7 +377,11 @@ The **Webhook Trigger** enables real-time workflow execution via HTTP requests:
 
 ### Google Form Trigger
 
-The **Google Form Trigger** connects FluxorAI to Google Forms submissions:
+<div align="center">
+  <img src="./public/screenshots/g-form-trigger.png" alt="Trigger Nodes" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
+
+The **Google Form Trigger** connects FluxorAI to Google Forms submissions using its Google Apps Script:
 
 - **OAuth Integration**: Securely connect your Google account
 - **Form Selection**: Choose which Google Form triggers your workflow
@@ -365,6 +393,10 @@ The **Google Form Trigger** connects FluxorAI to Google Forms submissions:
 **Example Use Case**: When someone submits a contact form, use AI to categorize the inquiry and route it to the appropriate Slack channel.
 
 ### Stripe Trigger
+
+<div align="center">
+  <img src="./public/screenshots/stripe-trigger.png" alt="Trigger Nodes" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
 
 The **Stripe Trigger** enables payment-driven automation:
 
@@ -406,7 +438,7 @@ With FluxorAI's diverse trigger options, you can build workflows that respond to
 ## 💬 Messaging Integrations
 
 <div align="center">
-  <img src="./public/messaging.png" alt="Messaging Integrations" width="100%" style="max-height: 400px; object-fit: cover;">
+  <img src="./public/screenshots/execution-nodes.png" alt="Messaging Integrations" width="100%" style="max-height: 400px; object-fit: cover;">
 </div>
 
 FluxorAI's messaging integrations enable your workflows to communicate with teams and users through popular platforms. Send automated notifications, alerts, and updates seamlessly integrated into your existing communication tools.
@@ -422,6 +454,10 @@ The **Discord Node** brings workflow automation to your Discord servers:
 - **File Attachments**: Attach images, documents, and other files to messages
 - **Mentions & Roles**: Tag users and roles in automated notifications
 - **Channel Selection**: Send messages to different channels based on workflow logic
+
+<div align="center">
+  <img src="./public/screenshots/discord-node.png" alt="Messaging Integrations" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
 
 **Configuration**:
 1. Create a webhook in your Discord server settings
@@ -447,6 +483,10 @@ The **Slack Node** enables automation across Slack workspaces:
 - **Thread Support**: Reply to existing messages in threads
 - **Block Kit Messages**: Create interactive messages with buttons and menus
 - **User Mentions**: Tag team members with @mentions
+
+<div align="center">
+  <img src="./public/screenshots/slack-node.png" alt="Messaging Integrations" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
 
 **Configuration**:
 1. Create an incoming webhook in your Slack workspace

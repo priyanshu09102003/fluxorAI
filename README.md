@@ -542,7 +542,7 @@ With FluxorAI's messaging integrations, your workflows can communicate seamlessl
 ## ⚡ Execution Monitoring
 
 <div align="center">
-  <img src="./public/monitoring.png" alt="Execution Monitoring" width="100%" style="max-height: 400px; object-fit: cover;">
+  <img src="./public/screenshots/execution-track.png" alt="Execution Monitoring" width="100%" style="max-height: 400px; object-fit: cover;">
 </div>
 
 FluxorAI provides comprehensive execution monitoring and observability, giving you complete visibility into your workflow performance, errors, and AI usage. Built on Inngest for reliable background job execution and Sentry for AI-powered error tracking.
@@ -569,6 +569,20 @@ The **Execution History** page maintains a complete audit trail:
 - **Replay Failed Runs**: Re-execute failed workflows with original trigger data
 - **Export Data**: Download execution logs and results for analysis
 
+</br>
+
+- **On Successful Execution**: Track the successful execution and the response received from the final node and the time taken for the execution to complete : 
+<div align="center">
+  <img src="./public/screenshots/successful-execution.png" alt="Execution Monitoring" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
+
+
+- **On Error**: Completely monitor the Stack Trace and exact cause of the error of instant fix and debugging:
+
+<div align="center">
+  <img src="./public/screenshots/error-execution.png" alt="Execution Monitoring" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
+
 **Execution Record Details**:
 - Workflow name and ID
 - Trigger type and source data
@@ -578,7 +592,12 @@ The **Execution History** page maintains a complete audit trail:
 - Error messages and stack traces
 - Output data from final nodes
 
+
 ### Background Job Execution with Inngest
+
+<div align="center">
+  <img src="./public/screenshots/inngest-execution.png" alt="Execution Monitoring" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
 
 FluxorAI uses **Inngest** for reliable, scalable workflow execution:
 
@@ -608,6 +627,10 @@ FluxorAI integrates **Sentry's AI Monitoring** for intelligent observability:
 - **Error Detection**: Automatically flag failed AI calls with detailed error context
 - **Cost Attribution**: Calculate costs based on model pricing and token usage
 
+<div align="center">
+  <img src="./public/screenshots/sentry-logging.png" alt="Execution Monitoring" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
+
 **Error Insights**:
 - **Automatic Issue Grouping**: Sentry groups similar errors for efficient debugging
 - **Stack Traces**: Full stack traces for server-side errors
@@ -623,6 +646,10 @@ FluxorAI integrates **Sentry's AI Monitoring** for intelligent observability:
 
 ### Real-Time Updates
 
+<div align="center">
+  <img src="./public/screenshots/live-execution-status.png" alt="Execution Monitoring" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
+
 FluxorAI provides live execution feedback through WebSockets:
 
 - **Canvas Animation**: See nodes light up as they execute on the workflow canvas
@@ -631,15 +658,6 @@ FluxorAI provides live execution feedback through WebSockets:
 - **Variable Display**: View intermediate results as nodes complete
 - **Error Highlighting**: Failed nodes immediately highlighted with error details
 
-### Performance Analytics
-
-Track workflow efficiency with built-in analytics:
-
-- **Execution Time Distribution**: Histogram of workflow execution durations
-- **Success/Failure Rates**: Track reliability metrics over time
-- **AI Usage Trends**: Monitor token consumption and costs by provider
-- **Trigger Activity**: See which triggers activate most frequently
-- **Node Performance**: Identify slow nodes that need optimization
 
 With FluxorAI's comprehensive execution monitoring, you have complete visibility into your automation workflows—from real-time execution updates to historical analysis, AI usage tracking, and intelligent error detection. Build with confidence knowing every execution is logged, monitored, and optimized.
 
@@ -648,7 +666,7 @@ With FluxorAI's comprehensive execution monitoring, you have complete visibility
 ## 💳 Payments & Subscriptions
 
 <div align="center">
-  <img src="./public/payments.png" alt="Payments and Subscriptions" width="100%" style="max-height: 400px; object-fit: cover;">
+  <img src="./public/screenshots/payment-gateway.png" alt="Payments and Subscriptions" width="100%" style="max-height: 400px; object-fit: cover;">
 </div>
 
 FluxorAI is a production-ready SaaS platform with subscription management powered by **Polar**. Start with a **1-month free trial** and seamlessly transition to paid subscription with flexible payment options for users worldwide.
@@ -658,7 +676,7 @@ FluxorAI is a production-ready SaaS platform with subscription management powere
 FluxorAI offers a single, comprehensive **PRO Plan** designed to provide full access to all features:
 
 **FluxorAI PRO**:
-- **Price**: $29/month (after trial)
+- **Price**: $15/month (after trial)
 - **Free Trial**: 1 month completely free
 - **Unlimited Workflows**: Create and run as many workflows as you need
 - **All Trigger Nodes**: Webhook, Google Forms, Stripe, and Manual triggers
@@ -695,7 +713,7 @@ Every new user gets a **full-featured free trial**:
 **Key Features**:
 - **Global Currency Support**: Automatically handles currency conversion for users worldwide
 - **Tax Compliance**: Built-in tax calculation for international customers
-- **Stripe Integration**: Secure payment processing powered by Stripe
+- **Polar Integration**: Secure payment processing powered by Polar
 - **Payment Methods**: Credit cards, debit cards, and international payment options
 - **Invoice Generation**: Automatic invoice creation for every transaction
 - **Email Notifications**: Transactional emails for subscriptions, payments, and billing
@@ -708,7 +726,7 @@ Every new user gets a **full-featured free trial**:
 <tr>
 <td width="50%">
 
-<img src="./public/trial-activation.png" alt="Trial Activation" width="100%">
+<img src="./public/screenshots/trial-activation.png" alt="Trial Activation" width="100%">
 
 </td>
 <td width="50%">
@@ -731,17 +749,17 @@ Every new user gets a **full-featured free trial**:
 <tr>
 <td width="50%">
 
-<img src="./public/subscription-upgrade.png" alt="Subscription Upgrade" width="100%">
+<img src="./public/screenshots/trial-end.png" alt="Subscription Upgrade" width="100%">
 
 </td>
 <td width="50%">
 
-#### Upgrading to PRO
+#### Subscription Reminder
 
-1. **Trial Reminder**: Receive email notification before trial expires
+1. **Trial Reminder**: Receive email notification after trial expires
 2. **One-Click Upgrade**: Click "Upgrade to PRO" button in dashboard
 3. **Polar Checkout**: Redirected to secure Polar payment page
-4. **Enter Payment**: Add credit card details via Stripe
+4. **Enter Payment**: Add credit card details via Polar
 5. **Instant Activation**: Subscription activated immediately
 6. **Confirmation Email**: Receive welcome email with invoice
 
@@ -752,7 +770,7 @@ Every new user gets a **full-featured free trial**:
 ### Billing & Invoice Management
 
 <div align="center">
-  <img src="./public/billing-section.png" alt="Billing Section" width="100%" style="max-height: 400px; object-fit: cover;">
+  <img src="./public/screenshots/billing-section-1.png" alt="Billing Section" width="100%" style="max-height: 400px; object-fit: cover;">
 </div>
 
 FluxorAI provides a comprehensive **Billing Section** for complete transparency and subscription management:
@@ -764,18 +782,15 @@ FluxorAI provides a comprehensive **Billing Section** for complete transparency 
 - **Subscription Status**: Active, trial, expired, or cancelled
 - **Usage Metrics**: Track workflow executions and AI usage
 
-**Invoice History**:
-- **All Invoices**: Complete history of all billing transactions
-- **Download PDFs**: One-click download of invoice PDFs
-- **Payment Status**: See which invoices are paid, pending, or failed
-- **Date & Amount**: Transaction date and charged amount
-- **Invoice Numbers**: Unique identifiers for accounting purposes
-
 <div align="center">
-  <img src="./public/invoice-email.png" alt="Invoice Email Notification" width="100%" style="max-height: 400px; object-fit: cover;">
+  <img src="./public/screenshots/billing-section-2.png" alt="Billing Section" width="100%" style="max-height: 400px; object-fit: cover;">
 </div>
 
+
+
+
 ### Email Notifications & Invoices
+
 
 FluxorAI sends automated emails for transparency and accountability:
 
@@ -802,6 +817,11 @@ FluxorAI sends automated emails for transparency and accountability:
   - Polar branding and compliance information
 
 **Sample Invoice Email**:
+
+<div align="center">
+  <img src="./public/screenshots/trial-activation.png" alt="Invoice Email Notification" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
+
 ```
 Subject: Thank you for your subscription!
 
@@ -817,6 +837,13 @@ Total: $0.00 (Free Trial)
 
 Next billing: February 15, 2026 - $29.00
 ```
+
+**Sample of the Invoice generated on purchase(received with Email - PDF)**:
+
+<div align="center">
+  <img src="./public/screenshots/invoice-generation.png" alt="Invoice Email Notification" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
+
 
 ### Global Tax & Currency Handling
 
@@ -835,37 +862,11 @@ Polar's international payment infrastructure ensures seamless billing worldwide:
 - Tax identification number collection when needed
 - Compliant invoicing with tax breakdowns
 
-**Example**: A user in India sees pricing in INR, pays with local payment methods, and receives invoices with appropriate GST calculations—all handled automatically by Polar.
+**Example**: A user in India sees equivalent pricing in INR, pays with local payment methods, and receives invoices with appropriate GST calculations—all handled automatically by Polar.
 
-### Subscription Management
-
-Users have full control over their subscription through the **Billing Section**:
-
-**Available Actions**:
-- **Update Payment Method**: Change credit card without interrupting service
-- **View Invoices**: Access complete invoice history
-- **Download Receipts**: PDF invoices for accounting and expense reports
-- **Cancel Subscription**: Cancel anytime with prorated refunds
-- **Reactivate**: Resume cancelled subscriptions easily
-- **Billing Address**: Update billing information for accurate invoicing
-
-**Cancellation Policy**:
-- Cancel anytime, no questions asked
-- Continue using FluxorAI until end of paid period
-- No automatic renewals after cancellation
-- Option to reactivate before period ends
-- Export all workflow data before account closure
-
-### Payment Security
-
-FluxorAI and Polar maintain the highest security standards:
-
-- **PCI Compliance**: Stripe ensures PCI DSS Level 1 compliance
-- **No Stored Cards**: Credit card details never stored in FluxorAI database
-- **Stripe Tokens**: Secure tokenization for all payment methods
-- **3D Secure**: Support for additional authentication when required
-- **Fraud Detection**: Stripe's advanced fraud prevention
-- **Encrypted Transmission**: All payment data transmitted over HTTPS
+<div align="center">
+  <img src="./public/screenshots/tax-handling.png" alt="Invoice Email Notification" width="100%" style="max-height: 400px; object-fit: cover;">
+</div>
 
 With FluxorAI's comprehensive payment integration powered by Polar, you get transparent billing, global payment support, automatic invoicing, and complete subscription control—enabling you to focus on building powerful workflows while we handle the complexity of payment processing and international compliance.
 
@@ -961,14 +962,14 @@ A platform for event-driven workflows and reliable background job execution. Inn
 
 **OpenAI SDK**
 
-Official TypeScript SDK for OpenAI's API, providing access to GPT-4, GPT-3.5-turbo, and other models. Enables text generation, completion, chat, embeddings, and function calling with streaming support and type-safe interfaces.
+Official TypeScript SDK for OpenAI's API, providing access OpenAI models. Enables text generation, completion, chat, embeddings, and function calling with streaming support and type-safe interfaces.
 
 </td>
 <td width="50%">
 
 **Anthropic AI SDK**
 
-Official SDK for Anthropic's Claude models. Provides access to Claude 3 Opus, Sonnet, and Haiku with advanced reasoning capabilities, long context windows, and constitutional AI principles for safe, helpful responses.
+Official SDK for Anthropic's Claude models. Provides access to Claude Sonnet with advanced reasoning capabilities, long context windows, and constitutional AI principles for safe, helpful responses.
 
 </td>
 </tr>
@@ -977,7 +978,7 @@ Official SDK for Anthropic's Claude models. Provides access to Claude 3 Opus, So
 
 **Google Generative AI**
 
-Google's official SDK for Gemini models. Offers multimodal understanding with Gemini Pro and Gemini Pro Vision, enabling text, image, and video processing with state-of-the-art performance and integration with Google's AI ecosystem.
+Google's official SDK for Gemini models. Offers multimodal understanding with Gemini 2.5 Flash Model, enabling text, image, and video processing with state-of-the-art performance and integration with Google's AI ecosystem.
 
 </td>
 </tr>
@@ -1055,7 +1056,7 @@ Specialized monitoring for AI/LLM applications. Tracks all AI API calls, token u
 
 **Polar**
 
-Modern payment and subscription infrastructure for SaaS businesses. Polar integrates with Stripe to handle recurring billing, usage tracking, invoice generation, and customer portal management, enabling FluxorAI's full monetization capabilities with minimal development effort.
+Modern payment and subscription infrastructure for SaaS businesses. Polar integrates with FluxorAI to handle recurring billing, usage tracking, invoice generation, and customer portal management, enabling FluxorAI's full monetization capabilities with minimal development effort.
 
 </td>
 </tr>
@@ -1163,13 +1164,13 @@ This powerful, modern technology stack enables FluxorAI to deliver visual workfl
 
 ---
 
-## 📧 Contact
+## 📧 Contact the Developer: 
 
-**[Your Name]** - [LinkedIn](https://www.linkedin.com/in/your-profile/)
+**Priyanshu Paul** - [LinkedIn](https://www.linkedin.com/in/priyanshu-paul-59221228a/)
 
-Project Link: [https://fluxorai.vercel.app/](https://fluxorai.vercel.app/)
+Project Link: [https://fluxorai.vercel.app/](https://fluxor-ai-automation.vercel.app/)
 
-GitHub Repository: [https://github.com/yourusername/fluxorai](https://github.com/yourusername/fluxorai)
+GitHub Repository: [https://github.com/priyanshu09102003/fluxorAI](https://github.com/priyanshu09102003/fluxorAI)
 
 ---
 
